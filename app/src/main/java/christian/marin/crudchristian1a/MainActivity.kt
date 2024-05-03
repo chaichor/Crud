@@ -7,6 +7,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -28,7 +30,14 @@ class MainActivity : AppCompatActivity() {
         val txtPrecio = findViewById<EditText>(R.id.txtPrecio)
         val btnAgregar = findViewById<Button>(R.id.btnAgregar)
         val txtCantidad = findViewById<EditText>(R.id.txtCantidad)
+        val rcvDatos = findViewById<RecyclerView>(R.id.rcvDatos)
 
+        //1 ponerle un layout a mi recyclerview
+        rcvDatos.layoutManager = LinearLayoutManager(this)
+
+        //2 crear adaptador
+
+        val miAdaptador = Adaptador(listaDeDatos)
 
         btnAgregar.setOnClickListener {
             GlobalScope.launch(Dispatchers.IO){
@@ -47,5 +56,14 @@ class MainActivity : AppCompatActivity() {
                 addProducto.executeUpdate()
             }
         }
+
+        //mostrar datos
+
+
+
     }
+}
+
+class Adaptador(private val Datos: Array<String>){
+
 }
