@@ -35,9 +35,6 @@ class MainActivity : AppCompatActivity() {
         //1 ponerle un layout a mi recyclerview
         rcvDatos.layoutManager = LinearLayoutManager(this)
 
-        //2 crear adaptador
-
-        val miAdaptador = Adaptador(listaDeDatos)
 
         btnAgregar.setOnClickListener {
             GlobalScope.launch(Dispatchers.IO){
@@ -62,8 +59,4 @@ class MainActivity : AppCompatActivity() {
 
 
     }
-}
-
-class Adaptador(private val Datos: Array<String>){
-
 }
